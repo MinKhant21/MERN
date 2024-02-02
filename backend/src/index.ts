@@ -20,13 +20,14 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-const mongoURL = "mongodb+srv://hlaingminthan:test1234@mern-cluster.cut3lbf.mongodb.net/?retryWrites=true&w=majority"
+const mongoURL = "mongodb+srv://admin:tprYkf78RaD3jUy2@eccom.tlcnxfp.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(mongoURL).then(() => {
     console.log('connected to db');
     app.listen(process.env.PORT,() => {
         console.log('app is running on localhost:'+process.env.PORT);
     })
 });
+mongoose.set("strictQuery", true, "useNewUrlParser", true);
 // app.use(helmet());
 
 app.get("/", (req: Request, res: Response) => {
