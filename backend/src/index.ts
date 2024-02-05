@@ -8,7 +8,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
-
+const userRoutes = require('./routes/user')
 dotenv.config();
 
 // Other middleware
@@ -30,9 +30,10 @@ mongoose.connect(mongoURL).then(() => {
 mongoose.set("strictQuery", true, "useNewUrlParser", true);
 // app.use(helmet());
 
+app.use('/api',userRoutes)
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
-// app.listen(port, () => {
-//   console.log(`[server]: Server is running at http://localhost:${port}`);
-// });
+
+
