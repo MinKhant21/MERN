@@ -1,7 +1,7 @@
 import { UserInteractor } from "../interactors/UserInteractor";
 import { create } from "../persistences/UserPersistence";
 import reqBodyResg from "../entities/reqBodyResg";
-import { Response } from "express";
+import { Request,Response } from "express";
 import { ResponseMessage } from "../helpers/ResponseMessage";
 export const UserController = {
   register: async (req: Request, res: Response) => {
