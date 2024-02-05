@@ -2,6 +2,7 @@ import { UserInteractor } from "../interactors/UserInteractor";
 import { create } from "../persistences/UserPersistence";
 import reqBodyResg from "../entities/reqBodyResg";
 import { Response } from "express";
+import { ResponseMessage } from "../helpers/ResponseMessage";
 export const UserController = {
   register: async (req: Request, res: Response) => {
     const { name, email, password }: reqBodyResg | any = req.body;
@@ -11,17 +12,11 @@ export const UserController = {
         email,
         password,
       });
+
       if (user) {
-        res.status(200).json({
-          status: 200,
-          message: "User created successfully",
-          data: user,
-        });
+        ResponseMessage(res, 200, "User created successfully", user);
       } else {
-        res.status(400).json({
-          status: 400,
-          message: "User not created",
-        });
+        ResponseMessage(res, 400, "User not created");
       }
     } catch (error) {
       return {
