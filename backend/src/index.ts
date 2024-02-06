@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api", userRoutes);
 
-// app.use('/api',authRoutes);
+app.use('/api',authRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");

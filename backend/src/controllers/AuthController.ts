@@ -1,30 +1,15 @@
 import {Response,Request} from 'express';
 const User = require('../models/User');
 const mongoose = require("mongoose");
+import { AuthIneractor } from '../interactors/AuthInteractor'; 
 
 export const AuthController = {
      login: async (req:Request,res:Response) =>{
-          // const {email,password} : any = req.body;
-          // const user = await User.findOne({email});
-          // if(user){
-          //     if(user.password === password){
-          //         res.status(200).json({
-          //             success: true,
-          //             message: "Login successful",
-          //             user: user
-          //         })
-          //     }else{
-          //         res.status(401).json({
-          //             success: false,
-          //             message: "Invalid password"
-          //         })
-          //     }
-          // }else{
-          //     res.status(401).json({
-          //         success: false,
-          //         message: "Invalid email"
-          //     })
-          // }
- 
+          let user = await AuthIneractor.userLogin(req.body)
+          if (user) {
+               return res.status(200).json(user);
+          } else {
+               return res.status(401).json({message: "Invalid credentials"});
+          }
      }
 }
