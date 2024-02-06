@@ -23,4 +23,13 @@ const UserSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("User", UserSchema);
+let UserModel;
+
+// Check if the model already exists to avoid redefining it
+if (mongoose.models.User) {
+  UserModel = mongoose.model("User");
+} else {
+  UserModel = mongoose.model("User", UserSchema);
+}
+
+export default UserModel;

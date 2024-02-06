@@ -9,6 +9,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
+const authRoutes = require("./routes/auth");
 dotenv.config();
 
 // Other middleware
@@ -35,6 +36,7 @@ mongoose.set("strictQuery", true, "useNewUrlParser", true);
 
 app.use("/api", userRoutes);
 
+app.use('/api',authRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
