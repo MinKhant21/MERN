@@ -6,7 +6,7 @@ export const ProductController = {
           
      },
      add: async (req: Request, res: Response) => {
-
+          
      },
      update: async (req: Request, res: Response) => {
 

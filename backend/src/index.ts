@@ -11,6 +11,8 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/product");
+const categoryRoutes = require("./routes/category");
+const verifyToken  = require('./middlewares/verify-token')
 dotenv.config();
 
 // Other middleware
@@ -30,6 +32,7 @@ app.use("/api", userRoutes);
 
 app.use('/api',authRoutes);
 app.use('/api/product',productRoutes);
+app.use('/api/categories', verifyToken,categoryRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
