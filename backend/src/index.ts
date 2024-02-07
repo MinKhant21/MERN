@@ -23,15 +23,6 @@ app.use(express.json()); // Parse JSON requests
 
 app.use(express.urlencoded({ extended: false }));
 
-// const mongoURL =
-//   "mongodb+srv://admin:tprYkf78RaD3jUy2@eccom.tlcnxfp.mongodb.net/?retryWrites=true&w=majority";
-// mongoose.connect(mongoURL).then(() => {
-//   console.log("connected to db");
-//   app.listen(process.env.PORT, () => {
-//     console.log("app is running on localhost:" + process.env.PORT);
-//   });
-// });
-// mongoose.set("strictQuery", true, "useNewUrlParser", true);
 // app.use(helmet());
 
 app.use("/api", userRoutes);
