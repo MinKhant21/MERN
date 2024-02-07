@@ -1,7 +1,7 @@
 import {Response, Request, NextFunction} from "express";
 
 const {CategoryInteractor} = require('../interactors/CategoryInteractor');
-import {create,search,getList,del} from "../persistences/CategoryPersistence";
+import {create,search,getList,del,update} from "../persistences/CategoryPersistence";
 
 export const CategoryController = {
      getAll: async (req: Request, res: Response) => {
@@ -31,7 +31,14 @@ export const CategoryController = {
          }
      },
      update: async (req: Request, res: Response) => {
+          let id : any  =  req.query.category_id ;
 
+         let result = await CategoryInteractor.updateCategory(update,id,req.body);
+         if(result == 1) {
+           return res.status(200).json({message: "Successfully Updated category"});
+         } else {
+           return res.status(401).json({message: "Invalid credentials"});
+         }
      },
      delete: async (req: Request, res: Response) => {
           let id : any  =  req.query.category_id ;

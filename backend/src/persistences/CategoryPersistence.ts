@@ -53,4 +53,19 @@ export const del = async ( id : string) => {
     console.error(err,'hit');
     return err;
   }
+
 };
+
+export const update = async ( id : string,data : any) => {
+  try {
+    let category = await Category.update(data,{where:{ category_id: id }});
+    if (category) {
+      return category;
+    }
+    return null;
+  } catch (err) {
+    console.error(err,'hit');
+    return err;
+  }
+};
+

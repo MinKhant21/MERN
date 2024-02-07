@@ -33,4 +33,14 @@ export const CategoryInteractor = {
       return null;
     }
   },
+  updateCategory: async (update: Function,id:string, data: any) => {
+    try {
+      let category = await update(id,data);
+      if (category) {
+        return category;
+      } else {
+        return null;
+      }
+    } catch (error) {}
+  },
 };
