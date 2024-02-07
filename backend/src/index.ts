@@ -10,6 +10,7 @@ const helmet = require("helmet");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
+const productRoutes = require("./routes/product");
 dotenv.config();
 
 // Other middleware
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api", userRoutes);
 
 app.use('/api',authRoutes);
+app.use('/api/product',productRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
