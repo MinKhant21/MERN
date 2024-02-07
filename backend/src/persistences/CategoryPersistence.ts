@@ -1,5 +1,4 @@
-import reqBodyResg from "../entities/reqBodyResg";
-import { hashPassword } from "../helpers/auth";
+
 const {Category} = require('../models')
 
 export const create = async ( name : string) => {
@@ -22,6 +21,32 @@ export const search = async ( id : string) => {
     let category = await Category.findOne({where:{ category_id: id }});
     if (category) {
       return category.get();
+    }
+    return null;
+  } catch (err) {
+    console.error(err,'hit');
+    return err;
+  }
+};
+
+
+export const getList = async () => {
+  try {
+    let category = await Category.findAll();
+    if (category) {
+      return category;
+    }
+    return null;
+  } catch (err) {
+    console.error(err,'hit');
+    return err;
+  }
+};
+export const del = async ( id : string) => {
+  try {
+    let category = await Category.destroy({where:{ category_id: id }});
+    if (category) {
+      return category;
     }
     return null;
   } catch (err) {

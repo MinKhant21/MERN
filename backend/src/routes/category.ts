@@ -16,6 +16,6 @@ router.post(
   CategoryController.add
 );
 router.patch("/:id", CategoryController.update);
-router.delete("/:id", CategoryController.delete);
+router.delete("", CategoryController.delete);
 
 module.exports = router;
