@@ -1,19 +1,9 @@
+import {Request, Response} from "express";
+
+// import { ProductInteractor } from "../interactors/ProductInteractor";
+// import { store } from "../persistences/ProductPersistence";
 export const ProductController = {
-     getAll: async (req: Request, res: Response) => {
-          
-     },
-     getOne: async (req: Request, res: Response) => {
-          
-     },
-     add: async (req: Request, res: Response) => {
-          
-     },
-     update: async (req: Request, res: Response) => {
-
-     },
-     delete: async (req: Request, res: Response) => {
-
-     },
-}
-
-
+     addItem : async (req:Request, res:Response) => {
+          console.log(req.body);
+     }    
+};
