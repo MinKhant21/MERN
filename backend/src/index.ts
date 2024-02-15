@@ -27,11 +27,11 @@ app.use(express.urlencoded({ extended: false }))
 .use(express.json());
 // app.use(helmet());
 
-app.use("/api", userRoutes);
+// app.use("/api", userRoutes);
 
 app.use('/api',authRoutes);
-app.use('/api/products',productRoutes);
-app.use('/api/categories', verifyToken,categoryRoutes);
+// app.use('/api/products',productRoutes);
+// app.use('/api/categories', verifyToken,categoryRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");

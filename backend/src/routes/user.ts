@@ -6,7 +6,6 @@ const z = require("zod");
 import { UserController } from "../controllers/UserController";
 // const UserController = require('../controllers/UserController');
 const nodemailer = require("nodemailer");
-import Mailgen from "mailgen";
 const router = express.Router();
 
 router.post(
