@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: false }))
 .use(express.json());
 // app.use(helmet());
 
-// app.use("/api", userRoutes);
+app.use("/api", userRoutes);
 
 app.use('/api',authRoutes);
 // app.use('/api/products',productRoutes);
