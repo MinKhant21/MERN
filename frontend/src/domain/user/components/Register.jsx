@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useSignIn from "../hooks/useSignIn";
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let { SignIn, messages } = useSignIn();
@@ -20,7 +20,7 @@ export default function Login() {
   return (
     <div class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
     <div class="w-full p-6 bg-white border-t-4 border-gray-600 rounded-md shadow-md border-top lg:max-w-lg">
-        <h1 class="text-3xl font-semibold text-center text-gray-700">Login </h1>
+        <h1 class="text-3xl font-semibold text-center text-gray-700">Register </h1>
         <form class="space-y-4">
             <div>
                 <label class="label">
