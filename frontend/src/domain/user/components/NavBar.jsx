@@ -1,9 +1,9 @@
-import { React, useContext } from "react";
-import { AuthContext } from "../../../contexts/AuthContext";
+import { React } from "react";
+
 import BtnGroup from "./BtnGroup";
 
 export default function NavBar() {
-  let { user } = useContext(AuthContext);
+
   return (
     <>
       <div className="w-full shadow-md">
@@ -26,10 +26,7 @@ export default function NavBar() {
               </svg>
             </label>
           </div>
-          <div className="flex items-center space-x-5">
-       
-            <BtnGroup />
-          </div>
+          <BtnGroup  />
         </div>
       </div>
     </>

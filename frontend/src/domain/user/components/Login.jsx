@@ -6,7 +6,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   let { SignIn, messages } = useSignIn();
   const navigator = useNavigate();
-  const HandleSubmit = async () => {
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
     let result = await SignIn({ email, password });
     console.log(result);
     if (!result) {
@@ -26,18 +27,22 @@ export default function Login() {
                 <label class="label">
                     <span class="text-base label-text">Email</span>
                 </label>
-                <input type="text" placeholder="Email Address" class="w-full input input-bordered" />
+                <input type="email"
+                onChange={(e)=>setEmail(e.target.value)}
+                placeholder="Email Address" class="w-full input input-bordered" />
             </div>
             <div>
                 <label class="label">
                     <span class="text-base label-text">Password</span>
                 </label>
-                <input type="password" placeholder="Enter Password"
+                <input type="password"
+                onChange={(e)=>setPassword(e.target.value)}
+                placeholder="Enter Password"
                     class="w-full input input-bordered" />
             </div>
             <a href="#" class="text-xs text-gray-600 hover:underline hover:text-blue-600">Forget Password?</a>
             <div>
-                <button class="btn btn-block">Login</button>
+                <button onClick={HandleSubmit} class="btn btn-block">Login</button>
             </div>
         </form>
     </div>
