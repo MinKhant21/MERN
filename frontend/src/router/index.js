@@ -5,7 +5,8 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-
+import DLayout from '../domain/dashboard/components/Layout.jsx'
+import DashBoard from '../domain/dashboard/pages/Dashboard.jsx'
 import Login from "../domain/user/components/Login.jsx";
 import Layout from "../domain/user/pages/Layout.jsx";
 import Home from "../domain/user/pages/Home.jsx";
@@ -37,6 +38,16 @@ export default function Routes() {
       ],
     },
 
+    {
+      path:"/dashboard",
+      element:<DLayout/>,
+      children:[
+          {
+            path:"",
+            element:<DashBoard/>
+          },
+      ]
+    },
     {
       path: "/dashboard/login",
       element: <AdminLogin />,

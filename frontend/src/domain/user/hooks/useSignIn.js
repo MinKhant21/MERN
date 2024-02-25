@@ -3,6 +3,7 @@ import {BASE_API_URL} from '../../../utils/common.js';
 export default function useSignIn() {
 
      const [messages,setMessages] = useState("");
+     const [loading,setLoading] = useState(true)
      const SignIn = async ({email,password}) => {
           try {
                let response = await fetch(`${BASE_API_URL}/login`,{
@@ -21,6 +22,7 @@ export default function useSignIn() {
                          setMessages(result.message)
                          localStorage.setItem("token",result.token)
                          localStorage.setItem("user",JSON.stringify(result.user))
+                         setLoading(false)
                          return true;
                     }else{
                          setMessages("You're not administrator")
@@ -39,6 +41,7 @@ export default function useSignIn() {
 
      return {
           SignIn,
+          loading,
           messages,
      }
 }

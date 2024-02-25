@@ -1,13 +1,15 @@
-import React from 'react'
-// import { AuthContext } from '../../../contexts/AuthContext'
+import React, { useEffect } from "react";
+import useFetchProducts from "../hooks/useFetchProducts";
 
 export default function Home() {
-  // let {user} =  useContext(AuthContext);
+  let {fetchProducts} = useFetchProducts()
+  useEffect(()=>{
+    // fetchProducts()
+  },[])
   return (
-    <div className=' h-screen bg-slate-500'>
+    <div className=" h-screen">
       <h3>Home</h3>
       <p>abcd</p>
     </div>
-    
-  )
+  );
 }
