@@ -13,6 +13,7 @@ import Home from "../domain/user/pages/Home.jsx";
 import AdminLogin from "../domain/dashboard/pages/Login.jsx";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 import Register from "../domain/user/components/Register.jsx";
+import Category from "../domain/dashboard/pages/Category.jsx";
 
 export default function Routes() {
   let { authReady, user } = useContext(AuthContext);
@@ -45,6 +46,10 @@ export default function Routes() {
           {
             path:"",
             element:<DashBoard/>
+          },
+          {
+            path:"category",
+            element:<Category/>
           },
       ]
     },
