@@ -31,7 +31,7 @@ app.use("/api", userRoutes);
 
 app.use('/api',authRoutes);
 // app.use('/api/products',productRoutes);
-// app.use('/api/categories', verifyToken,categoryRoutes);
+app.use('/api/categories', verifyToken,categoryRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
