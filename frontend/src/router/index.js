@@ -16,9 +16,10 @@ import Register from "../domain/user/components/Register.jsx";
 import Category from "../domain/dashboard/pages/Category.jsx";
 
 export default function Routes() {
-  let { authReady, user } = useContext(AuthContext);
+  let { authReady, user ,role} = useContext(AuthContext);
+  
   let isAuthenticated = Boolean(user);
-
+  console.log(isAuthenticated)
   let routes = [
     {
       path: "/",
@@ -26,7 +27,7 @@ export default function Routes() {
       children: [
         {
           path: "",
-          element:isAuthenticated ? <Home /> : <Navigate to={"/login"}/>,
+          element: isAuthenticated ? <Home /> : <Navigate to={"/login"}/>,
         },
         {
           path: "/login",
@@ -60,5 +61,5 @@ export default function Routes() {
   ];
   const router = createBrowserRouter(routes);
 
-  return  <RouterProvider router={router} />;
+  return authReady &&  <RouterProvider router={router} />;
 }

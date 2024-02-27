@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useSignIn from "../hooks/useSignIn";
+import useSignIn from "../../../hooks/useSignIn";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let { SignIn, messages, loading } = useSignIn();
+
+  let { messages, SignIn } = useSignIn();
+
   let navigate = useNavigate();
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    let result = await SignIn({ email, password });
-  
-    if (result) {
-      // Navigate to the home page if sign-in is successful
-      navigate('/');
+    
+    let data = await SignIn({ email, password });
+    console.log(data);
+    if (data.status == "200") {
+      toast(messages);
+      navigate("/");
     } else {
-      // Navigate to the login page if sign-in fails
-      navigate('/login');
-      
+      toast(messages);
+      navigate("/login");
     }
-  
+
     // Clear the form fields
     setEmail("");
     setPassword("");
