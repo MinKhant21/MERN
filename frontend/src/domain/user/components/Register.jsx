@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useSignIn from "../hooks/useSignIn";
+import useSignIn from "../../../hooks/useSignIn";
+
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

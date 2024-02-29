@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import useFetchProducts from "../hooks/useFetchProducts";
 
 export default function Home() {
-  let {fetchProducts} = useFetchProducts()
   useEffect(()=>{
     // fetchProducts()
   },[])

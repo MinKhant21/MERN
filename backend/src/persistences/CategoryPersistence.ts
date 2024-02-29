@@ -3,12 +3,19 @@ const {Category} = require('../models')
 
 export const create = async ( name : string) => {
   try {
+    let rdata :any = {}
     let ifExit = await Category.findOne({where:{ name: name }});
     if (ifExit) {
-      return null;
+      rdata['status'] = "401",
+      rdata['message'] = "Already Exit"
+      return rdata
     }
     const category = await Category.create({name:name});
-    return category;
+    if(category){
+      rdata['status'] = "200",
+      rdata['message'] = "Category Created"
+      return rdata
+    }
   } catch (err) {
     console.error(err,'hit');
     return err;

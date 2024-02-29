@@ -1,11 +1,11 @@
 import { validateRequestBody } from "zod-express-middleware";
-import { CategoryController } from "../controllers/CategoryController";
+import CategoryController from '../controllers/CategoryController'
 const express = require("express");
 const router = express.Router();
 const z = require("zod");
-
-router.get("", CategoryController.getAll);
-router.get("/search", CategoryController.getOne);
+const Category  = new CategoryController();
+// router.get("", CategoryController.getAll);
+// router.get("/search", CategoryController.getOne);
 router.post(
   "",
   validateRequestBody(
@@ -13,9 +13,9 @@ router.post(
       name: z.string(),
     })
   ),
-  CategoryController.add
+  Category.store
 );
-router.patch("", CategoryController.update);
-router.delete("", CategoryController.delete);
+// router.patch("", CategoryController.update);
+// router.delete("", CategoryController.delete);
 
 module.exports = router;

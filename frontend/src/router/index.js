@@ -61,5 +61,5 @@ export default function Routes() {
   ];
   const router = createBrowserRouter(routes);
 
-  return authReady &&  <RouterProvider router={router} />;
+  return   <RouterProvider router={router} />;
 }

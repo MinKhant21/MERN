@@ -178,7 +178,7 @@ export default function CategoryHeader() {
           >
             Add
           </button>
-          <CategoryModal/>
+          <CategoryModal />
         </div>
       </div>
     </div>
