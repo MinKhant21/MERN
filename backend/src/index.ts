@@ -3,17 +3,13 @@ import express, { Application, Express, Request, Response } from "express";
 import dotenv from "dotenv";
 
 const app: Application = express();
-const port = process.env.PORT || 3000;
 const cors = require("cors");
 const morgan = require("morgan");
-const helmet = require("helmet");
-const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/product");
 const categoryRoutes = require("./routes/category");
 const verifyToken  = require('./middlewares/verify-token')
-const bodyParser = require('body-parser')
 dotenv.config();
 
 
