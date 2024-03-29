@@ -4,17 +4,17 @@ import axios from "axios";
 export default function useSignIn() {
   const [messages, setMessages] = useState("");
   const [loading, setLoading] = useState(true);
-  const SignIn = async ({ email, password }, role = "user") => {
+  const SignIn = async ({ email, password }) => {
     let res = await axios.post(`${BASE_API_URL}/login`, {
       email,
       password,
-      role,
+      role : "user",
     });
     if (res.data.status == "200") {
       setMessages(res.data.message);
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.user.role);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("role", res.data.data.role);
+      localStorage.setItem("user", JSON.stringify(res.data.data));
       return res.data;
     } else {
       setMessages(res.data.message);

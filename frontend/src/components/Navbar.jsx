@@ -1,6 +1,6 @@
 import { React } from "react";
 
-import BtnGroup from "../../../components/BtnGroup";
+import BtnGroup from "./BtnGroup";
 
 export default function NavBar() {
 

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../../contexts/AuthContext";
 
 import { Link } from "react-router-dom";
 import AccountBtnGroup from "./AccountBtnGroup";
+import { AuthContext } from "../contexts/AuthContext";
 export default function BtnGroup() {
   let { user } = useContext(AuthContext);
 
