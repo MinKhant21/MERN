@@ -1,20 +1,25 @@
 import React from "react";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import useSignIn from "../hooks/useSignIn";
-// import {redirect} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 export default function Login() {
-  let {SignIn} = useSignIn();
-  let {register,handleSubmit} = useForm({
-    defaultValues:{
-      email:"",
-      password :""
-    }
+  const navigate = useNavigate();
+  let { SignIn } = useSignIn();
+  let { register, handleSubmit } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
   const onSubmit = async (data) => {
-    let result = await SignIn(data)
-//     return redirect('/gggg')
-  }
+    let result = await SignIn(data);
+    if (result) {
+      navigate("/home");
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <div class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
       <div class="w-full p-6 bg-white border-t-4 border-gray-600 rounded-md shadow-md border-top lg:max-w-lg">
@@ -51,7 +56,7 @@ export default function Login() {
             Forget Password?
           </a>
           <input type="submit" className="btn btn-block" value="Login" />
-            {/* <input type="submit"  >
+          {/* <input type="submit"  >
               Login
             </input> */}
         </form>
