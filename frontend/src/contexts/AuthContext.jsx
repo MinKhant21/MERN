@@ -13,7 +13,7 @@ let AuthReducer = (state, action) => {
       return { ...state, user: action.payload };
       break;
     case "ROLE":
-      return { ...state, role:action.payload };
+      return { ...state, role: action.payload };
       break;
     case "IS_AUTH_READY":
       return { ...state, authReady: true };
@@ -34,15 +34,9 @@ export default function AuthContextProvider({ children }) {
   useEffect(() => {
     let userData = JSON.parse(localStorage.getItem("user"));
     let role = localStorage.getItem("role");
+    dispatch({ type: "IS_AUTH_READY" });
     if (userData) {
-      dispatch({ type: "IS_AUTH_READY" });
-      if (role == "admin") {
-        dispatch({ type: "LOG_IN", payload: userData });
-        dispatch({ type: "ROLE" ,payload:"admin"});
-      } else {
-        dispatch({ type: "LOG_IN", payload: userData });
-        dispatch({ type: "ROLE" ,payload:"user"});
-      }
+      dispatch({ type: "LOG_IN", payload: userData });
     } else {
       dispatch({ type: "LOG_OUT" });
     }

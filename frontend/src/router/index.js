@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 
 import {
@@ -18,11 +18,12 @@ import Home from '../pages/Home'
 import Layout from "../pages/Layout.jsx";
 import Login from '../pages/Login.jsx'
 import Register from "../pages/Register.jsx";
+
 export default function Routes() {
   let { authReady, user ,role} = useContext(AuthContext);
-  
+  console.log(user)
   let isAuthenticated = Boolean(user);
-  console.log(isAuthenticated)
+  
   let routes = [
     {
       path: "/",
@@ -64,5 +65,5 @@ export default function Routes() {
   ];
   const router = createBrowserRouter(routes);
 
-  return authReady && <RouterProvider router={router} />;
+  return <RouterProvider router={router} />;
 }

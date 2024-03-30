@@ -5,7 +5,6 @@ import AccountBtnGroup from "./AccountBtnGroup";
 import { AuthContext } from "../contexts/AuthContext";
 export default function BtnGroup() {
   let { user } = useContext(AuthContext);
-
   return (
     <>
       <div className="flex items-center space-x-5">

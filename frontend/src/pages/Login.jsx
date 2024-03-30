@@ -1,10 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from "react-hook-form";
 import useSignIn from "../hooks/useSignIn";
+// import {redirect} from 'react-router-dom'
 export default function Login() {
-  let navigator = useNavigate();
   let {SignIn} = useSignIn();
   let {register,handleSubmit} = useForm({
     defaultValues:{
@@ -14,11 +13,7 @@ export default function Login() {
   });
   const onSubmit = async (data) => {
     let result = await SignIn(data)
-    if(result){
-      navigator('/')
-    }else{
-      navigator('/login')
-    }
+//     return redirect('/gggg')
   }
   return (
     <div class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
