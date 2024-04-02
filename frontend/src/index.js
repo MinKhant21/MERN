@@ -1,14 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-import Routes from './router/index.js';
-import './index.css';
-import AuthContextProvider from './contexts/AuthContext.jsx';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import {AuthProvider} from './contexts/AuthContext.jsx'
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <AuthContextProvider>
-    <Routes/>
-  </AuthContextProvider>
+  // <AuthContextProvider>
+  //   <Routes/>
+  // </AuthContextProvider
+  <AuthProvider>
+    <App />
+  </AuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

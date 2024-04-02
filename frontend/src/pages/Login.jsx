@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import useSignIn from "../hooks/useSignIn";
-import { useNavigate } from "react-router-dom";
+
 export default function Login() {
-  const navigate = useNavigate();
   let { SignIn } = useSignIn();
   let { register, handleSubmit } = useForm({
     defaultValues: {
@@ -12,13 +11,8 @@ export default function Login() {
       password: "",
     },
   });
-  const onSubmit = async (data) => {
-    let result = await SignIn(data);
-    if (result) {
-      navigate("/home");
-    } else {
-      navigate("/login");
-    }
+  const onSubmit = (data) => {
+    SignIn(data)
   };
   return (
     <div class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">

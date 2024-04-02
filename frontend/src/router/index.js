@@ -20,11 +20,11 @@ import Login from '../pages/Login.jsx'
 import Register from "../pages/Register.jsx";
 
 export default function Routes() {
-  let { authReady, user ,role} = useContext(AuthContext);
-  console.log(user)
+  let { authReady, user } = useContext(AuthContext);
   let isAuthenticated = Boolean(user);
+  console.log(user,'main',isAuthenticated)
   
-  let routes = [
+  let router =createBrowserRouter( [
     {
       path: "/",
       element: <Layout />,
@@ -62,8 +62,7 @@ export default function Routes() {
     //   path: "/dashboard/login",
     //   element: <AdminLogin />,
     // },
-  ];
-  const router = createBrowserRouter(routes);
+  ])
 
-  return <RouterProvider router={router} />;
+  return (authReady && <RouterProvider router={router} />);
 }

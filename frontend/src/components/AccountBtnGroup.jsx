@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from "react-router-dom";
+import useCheckUser from '../hooks/useCheckUser';
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function AccountBtnGroup() {
-     const navigator = useNavigate();
-     const HandleLogOut = () => {
-          localStorage.removeItem('user')
-          localStorage.removeItem('token')
-          navigator('/login')
+     const navigate = useNavigate();
+     const {SignOut,isExit} = useCheckUser();
+     let {user} = useContext(AuthContext)
+     const HandleLogOut = async () => {
+        await SignOut();
+          navigate('/login')
+
+        // if(isExit){
+        //   navigate('/login')
+        // }else{
+        //   
+        // }
      }
 
   return (
