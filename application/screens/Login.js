@@ -5,7 +5,7 @@ import React from "react";
 export default function Login() {
   return (
     <View className="flex-1 items-center justify-center">
-      <Text className=" text-xl font-bold ">SIGN IN</Text>
+      <Text className=" text-xl font-bold ">LOGIN</Text>
       <View className=" flex flex-col gap-5 mt-10 justify-center items-center">
         <TextInput
           className=" border-b-red-300 w-[250px] bg-white"
@@ -29,7 +29,7 @@ export default function Login() {
       </View>
 
       <TouchableOpacity className=" px-5 py-4 bg-purple-400 w-[250px]  mt-9 rounded-2xl">
-        <Text className="text-center font-bold text-white">Sign In</Text>
+        <Text className="text-center font-bold text-white">Login</Text>
       </TouchableOpacity>
     </View>
   );
