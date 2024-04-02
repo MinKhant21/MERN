@@ -8,6 +8,7 @@ import {
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Layout from "./pages/Layout";
+import Register from "./pages/Register";
 import Dashboard from './pages/dashboard/Dashboard'
 import { useAuth } from "./contexts/AuthContext";
 
@@ -24,6 +25,10 @@ export default function App() {
           <Route
             path="/login"
             element={!isAuthenticated ? <Login /> : <Navigate to={"/"} />}
+          />
+          <Route
+            path="/register"
+            element={!isAuthenticated ? <Register /> : <Navigate to={"/"} />}
           />
         </Route>
         <Route path="/dashboard" element={ role === 'admin' ?  <Dashboard/> : <Navigate to={"/"}/>}>

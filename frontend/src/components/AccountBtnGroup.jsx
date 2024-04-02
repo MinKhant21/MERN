@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
-import { useAuth } from '../contexts/AuthContext'
 
-export default function AccountBtnGroup() {
-  let {logout} =   useAuth();
+export default function AccountBtnGroup({logout}) {
 const HandleLogout = () =>{
   logout()
 }

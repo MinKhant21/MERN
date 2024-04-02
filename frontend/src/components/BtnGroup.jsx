@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
 import AccountBtnGroup from "./AccountBtnGroup";
+import { useAuth } from "../contexts/AuthContext";
 export default function BtnGroup() {
-  const user = true
+  const {logout , userData} = useAuth();
   return (
     <>
       <div className="flex items-center space-x-5">
-        {!user ? (
+        {!userData ? (
           <Link
             to={"/login"}
             className="bg-purple-500 text-white px-4 py-2 rounded-2xl font-semibold font-sans"
@@ -18,7 +19,7 @@ export default function BtnGroup() {
           ""
         )}
 
-        {!user ? (
+        {!userData ? (
           <Link
             to={"/register"}
             className=" bg-red-500 text-white px-4 py-2 rounded-2xl font-semibold font-sans"
@@ -63,7 +64,7 @@ export default function BtnGroup() {
           </div>
         </div>
         {
-          user ? <AccountBtnGroup/> : ""
+          userData ? <AccountBtnGroup logout={logout}/> : ""
         }
       </div>
     </>
