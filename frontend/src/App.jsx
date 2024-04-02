@@ -11,6 +11,7 @@ import Layout from "./pages/Layout";
 import Register from "./pages/Register";
 import Dashboard from './pages/dashboard/Dashboard'
 import { useAuth } from "./contexts/AuthContext";
+import DashboardHome from "./pages/dashboard/DashboardHome";
 
 export default function App() {
   const { isAuthenticated ,role} = useAuth();
@@ -31,8 +32,9 @@ export default function App() {
             element={!isAuthenticated ? <Register /> : <Navigate to={"/"} />}
           />
         </Route>
+        {/* DashBoard */}
         <Route path="/dashboard" element={ role === 'admin' ?  <Dashboard/> : <Navigate to={"/"}/>}>
-          
+          <Route index element={<DashboardHome/>}/>
         </Route>
       </Routes>
     </Router>
