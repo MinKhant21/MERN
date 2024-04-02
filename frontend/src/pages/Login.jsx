@@ -11,8 +11,8 @@ export default function Login() {
       password: "",
     },
   });
-  const onSubmit = (data) => {
-    SignIn(data)
+  const onSubmit = async (data) => {
+    await SignIn(data);
   };
   return (
     <div class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">

@@ -1,23 +1,11 @@
 import React, { useContext } from 'react'
-import { useNavigate } from "react-router-dom";
-import useCheckUser from '../hooks/useCheckUser';
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext'
 
 export default function AccountBtnGroup() {
-     const navigate = useNavigate();
-     const {SignOut,isExit} = useCheckUser();
-     let {user} = useContext(AuthContext)
-     const HandleLogOut = async () => {
-        await SignOut();
-          navigate('/login')
-
-        // if(isExit){
-        //   navigate('/login')
-        // }else{
-        //   
-        // }
-     }
-
+  let {logout} =   useAuth();
+const HandleLogout = () =>{
+  logout()
+}
   return (
      <div className="dropdown dropdown-end">
           <div
@@ -46,7 +34,7 @@ export default function AccountBtnGroup() {
               <a>Settings</a>
             </li>
             <li>
-              <a onClick={HandleLogOut}>Logout</a>
+              <a onClick={HandleLogout} >Logout</a>
             </li>
           </ul>
         </div>

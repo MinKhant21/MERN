@@ -5,14 +5,15 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [userData, setUserData] = useState(null);
-  const [isAuthenticated, setSsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [role, setRole] = useState("user");
   const storedData = JSON.parse(localStorage.getItem("user_data"));
   useEffect(() => {
     if (storedData) {
       const { userToken, user } = storedData;
       setToken(userToken);
       setUserData(user);
-      setSsAuthenticated(true);
+      setIsAuthenticated(true);
     }
   }, []);
 
@@ -21,22 +22,23 @@ export const AuthProvider = ({ children }) => {
       "user_data",
       JSON.stringify({ userToken: newToken, user: newData })
     );
+    setRole(newData.role)
     setToken(newToken);
     setUserData(newData);
     console.log(token)
-    setSsAuthenticated(true);
+    setIsAuthenticated(true);
   };
 
   const logout = () => {
     localStorage.removeItem("user_data");
     setToken(null);
     setUserData(null);
-    setSsAuthenticated(false);
+    setIsAuthenticated(false);
   };
 
   return (
     <AuthContext.Provider
-      value={{token, isAuthenticated, login, logout, userData}}
+      value={{token, isAuthenticated, login, logout, userData,role}}
     >
       {children}
     </AuthContext.Provider>
