@@ -1,12 +1,10 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native';
-import Login from './screens/Login';
-import Register from './screens/Register';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import Tabs from "./navigation/tabs";
 export default function App() {
   return (
-    
-      <Register/>
+    <NavigationContainer>
+      <Tabs/>
+    </NavigationContainer>
   );
 }
-
-
