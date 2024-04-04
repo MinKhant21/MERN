@@ -23,7 +23,7 @@ const screenOptions = ({ route }) => ({
   },
   tabBarBadge: route.name === 'Cart' ? 5 : null, // Adjust the badge value as needed
   tabBarShowLabel: false,
-  // headerShown: false,
+  headerShown: false,
 });
 
 const Tabs = () => {
