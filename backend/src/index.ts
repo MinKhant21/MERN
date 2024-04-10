@@ -5,10 +5,7 @@ import dotenv from "dotenv";
 const app: Application = express();
 const cors = require("cors");
 const morgan = require("morgan");
-const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
-const productRoutes = require("./routes/product");
-const categoryRoutes = require("./routes/category");
 const verifyToken  = require('./middlewares/verify-token')
 dotenv.config();
 
@@ -23,11 +20,11 @@ app.use(express.urlencoded({ extended: false }))
 .use(express.json());
 // app.use(helmet());
 
-app.use("/api", userRoutes);
+// app.use("/api", userRoutes);
 
 app.use('/api',authRoutes);
 // app.use('/api/products',productRoutes);
-app.use('/api/categories', verifyToken,categoryRoutes);
+// app.use('/api/categories', verifyToken,categoryRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");

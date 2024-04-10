@@ -1,11 +1,13 @@
 import { AuthController } from "../controllers/AuthController";
+
 const express = require("express");
 const z = require("zod");
 const router = express.Router();
 
-const Auth = new AuthController();
+const authController  = AuthController();
 
-router.post("/login", Auth.loginUser);
-router.post("/register", Auth.registerUser);
+
+router.post("/login", authController.loginUser);
+router.post("/register", authController.registerUser);
 
 module.exports = router;

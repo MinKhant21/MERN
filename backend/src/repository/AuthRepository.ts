@@ -1,7 +1,8 @@
 import { generateToken, hashPassword, comparePassword } from "../helpers/auth";
 const { User } = require("../models");
-export class AuthRepository {
-  async login(email: string, role: string, password: string) {
+
+export const AuthRepository = () => {
+  const login = async (email: string, role: string, password: string) => {
     try {
       const userRecord = await User.findOne({ where: { email } });
       if (!userRecord) {
@@ -31,9 +32,9 @@ export class AuthRepository {
       console.error("Error during login:", error);
       throw error;
     }
-  }
+  };
 
-  async register({
+  const register = async ({
     name,
     email,
     password,
@@ -41,13 +42,12 @@ export class AuthRepository {
     name: string;
     email: string;
     password: string;
-  }): Promise<any> {
+  }): Promise<any> => {
     try {
       const userExists = await User.findOne({ where: { email } });
       if (userExists) {
         throw new Error("User already exists with this email");
       }
-
       const newUser = await User.create({
         name,
         email,
@@ -58,5 +58,9 @@ export class AuthRepository {
       console.error("Error during registration:", error);
       throw error;
     }
-  }
-}
+  };
+  return {
+    login,
+    register,
+  };
+};
