@@ -19,15 +19,16 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  let {login} = useLogin();
+  let {Userlogin,message} = useLogin();
 
-  const onSubmit = async (data) => {
-    await login(data);
+  const onSubmit =  (data) => {
+    Userlogin(data);
   };
   return (
     <>
      {errors.email  && <AlertBox message={"Must be put the inputs feild!"} />}
      {errors.password && <AlertBox message={"Must be put the inputs feild!"} />}
+     {message &&  <AlertBox message={message} />}
       <div className=" flex justify-center items-center h-screen">
         <Card color="transparent" shadow={false}>
           <Typography variant="h4" color="blue-gray">
