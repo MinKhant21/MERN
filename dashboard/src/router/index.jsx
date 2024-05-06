@@ -4,6 +4,8 @@ import {
 } from "react-router-dom";
 import Layout from "../components/Layout";
 import Home from "../pages/Home";
+import Login from "../pages/Login";
+import NotFoundPage from "../components/NotFoundPage";
 
 
 export default function Routes(){
@@ -18,6 +20,14 @@ export default function Routes(){
               },
             ]
           },
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path: "*",
+            element: <NotFoundPage/>,
+          }
           
         ]
   const router = createBrowserRouter(routes);
