@@ -9,6 +9,7 @@ import {
 
 import { useForm } from "react-hook-form";
 import AlertBox from "../components/AlertBox";
+import useLogin from "../hooks/useLogin";
 
 export default function Login() {
   let {
@@ -18,8 +19,10 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  let {login} = useLogin();
+
+  const onSubmit = async (data) => {
+    await login(data);
   };
   return (
     <>

@@ -1,6 +1,7 @@
 import { generateToken, hashPassword, comparePassword } from "../helpers/auth";
 const { User } = require("../models");
 
+
 export const AuthRepository = () => {
   const login = async (email: string, role: string, password: string) => {
     try {
@@ -16,6 +17,7 @@ export const AuthRepository = () => {
           throw new Error("Password does not match");
         }
 
+        delete user.password
         return {
           status: 200,
           token: await generateToken(user.name),
@@ -53,6 +55,7 @@ export const AuthRepository = () => {
         email,
         password: await hashPassword(password),
       });
+    
       return newUser;
     } catch (error) {
       console.error("Error during registration:", error);

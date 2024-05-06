@@ -6,6 +6,7 @@ const app: Application = express();
 const cors = require("cors");
 const morgan = require("morgan");
 const authRoutes = require("./routes/auth");
+const productRoutes = require('./routes/product')
 const verifyToken  = require('./middlewares/verify-token')
 dotenv.config();
 

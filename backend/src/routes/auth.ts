@@ -1,10 +1,10 @@
-import { AuthController } from "../controllers/AuthController";
+import AuthController from "../controllers/AuthController";
 
 const express = require("express");
 const z = require("zod");
 const router = express.Router();
 
-const authController  = AuthController();
+const authController  = new AuthController();
 
 
 router.post("/login", authController.loginUser);

@@ -1,8 +1,24 @@
-POST http://localhost:8000/api/login HTTP/1.1
+
+
+# POST http://localhost:8000/api/login HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email": "user1@gmail.com",
+#     "role": "user",
+#     "password" : "user123"
+# }
+
+POST http://localhost:8000/api/products/create HTTP/1.1
 content-type: application/json
+x-auth-token:  eyJhbGciOiJIUzI1NiJ9.dXNlcjE.ZFu3q5nmkXStggiOz5pZjT8NJ5oFCQPXhaG2tw0hBqA
 
 {
-    "email": "user1@gmail.com",
-    "role": "user",
-    "password" : "user123"
+    "category_id": "35221ffe-25af-4828-8a33-bd89458ca35f",
+    "name" : "iphone 11",
+    "image" : "hello",
+    "description" : "ram 5",
+    "quantity" : "10",
+    "buy_price" : "6000000",
+    "sell_price" : "17000000"
 }
